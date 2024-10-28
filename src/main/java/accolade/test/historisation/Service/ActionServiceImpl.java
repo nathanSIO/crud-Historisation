@@ -2,6 +2,9 @@ package accolade.test.historisation.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +24,9 @@ public class ActionServiceImpl implements ActionService{
     public void saveAction(Personnel personnel, ActionType actionType){
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        String localDateTime = LocalDateTime.now().format(formatter).toString();
+        // Calendar calendar = new GregorianCalendar();
+        // Date date = calendar.getTime();
+        LocalDateTime localDateTime = LocalDateTime.now();
 
         String commentaire ;
 
@@ -45,5 +50,10 @@ public class ActionServiceImpl implements ActionService{
 
         Action action = new Action(personnel.getId(), localDateTime, actionType, commentaire);
         actionRepository.save(action);
+    }
+
+    @Override
+    public void deleteActions(){
+        actionRepository.deleteActionsBefore(LocalDateTime.now().minusMinutes(15));
     }
 }

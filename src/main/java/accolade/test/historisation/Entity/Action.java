@@ -1,5 +1,8 @@
 package accolade.test.historisation.Entity;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,7 +24,7 @@ public class Action {
     private Long UserId;
 
     @Column
-    private String date;
+    private LocalDateTime date;
 
     @Enumerated(EnumType.STRING)
     @Column
@@ -32,7 +35,7 @@ public class Action {
 
     
 
-    public Action(Long userId, String date, ActionType actionType, String commentaire) {
+    public Action(Long userId, LocalDateTime date, ActionType actionType, String commentaire) {
         UserId = userId;
         this.date = date;
         this.actionType = actionType;
@@ -55,11 +58,11 @@ public class Action {
         UserId = userId;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

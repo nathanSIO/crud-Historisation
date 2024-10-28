@@ -86,6 +86,7 @@ public class PersonnelController {
 
 	@RequestMapping(value="read", method = RequestMethod.GET)
 	public String getAllPersonnnel(Model model){
+		actionService.deleteActions();
 		// List<Personnel> personnels = personnelRepository.findAll();
 		List<Personnel> personnels = listPersonnel(model);
 		model.addAttribute("personnels", personnels);
