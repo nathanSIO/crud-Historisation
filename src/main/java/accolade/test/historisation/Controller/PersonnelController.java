@@ -13,8 +13,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import accolade.test.historisation.Entity.ActionType;
 import accolade.test.historisation.Entity.Personnel;
-import accolade.test.historisation.Service.ActionService;
+// import accolade.test.historisation.Service.ActionService;
 import accolade.test.historisation.Service.PersonnelService;
+import accolade.test.service.ActionService;
+
 
 @RequestMapping("/crud")
 @Controller
@@ -49,7 +51,7 @@ public class PersonnelController {
 			e.printStackTrace();
         }
 		Personnel p1 = personnelService.savePersonnel(personnel);
-		actionService.saveAction(p1, ActionType.Ajout);
+		actionService.saveAction(p1.getId(),"Ajout d'un personnel", ActionType.Ajout.getId());
 		List<Personnel> personnels = listPersonnel(model);
 		model.addAttribute("personnels", personnels);
 		return "personnel";
@@ -62,7 +64,7 @@ public class PersonnelController {
 		Personnel p1 = personnelService.getPersonnelById(id);
 		try {
 			personnelService.deletePersonnelById(id);
-			actionService.saveAction(p1, ActionType.Suppression);
+			actionService.saveAction(p1.getId(),"Suppression d'un personnel", ActionType.Suppression.getId());
 			
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
@@ -99,7 +101,7 @@ public class PersonnelController {
 			String personnelJson = objectMapper.writeValueAsString(personnel);
 			System.out.println("Etape 1" + personnelJson);
 			Personnel p1 = personnelService.savePersonnel(personnel);
-			actionService.saveAction(p1, ActionType.Mise_a_jour);
+			actionService.saveAction(p1.getId(),"Mise à jour d'un personnel" ,ActionType.Mise_a_jour.getId());
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
 			return "personnel";
