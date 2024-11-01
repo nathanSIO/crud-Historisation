@@ -16,7 +16,7 @@ public enum ActionType {
         return id;
     }
 
-    public static ActionType fromId(int id) {
+    public static ActionType getActionTypefromId(int id) {
         for (ActionType type : values()) {
             if (type.getId() == id) {
                 return type;
