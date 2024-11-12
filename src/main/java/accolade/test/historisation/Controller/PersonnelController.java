@@ -1,4 +1,4 @@
-package accolade.test.historisation.Controller;
+package accolade.test.historisation.controller;
 
 import java.util.List;
 
@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import accolade.test.historisation.Entity.ActionType;
-import accolade.test.historisation.Entity.Personnel;
-// import accolade.test.historisation.Service.ActionService;
-import accolade.test.historisation.Service.PersonnelService;
+import accolade.test.historisation.entity.ActionType;
+import accolade.test.historisation.entity.Personnel;
+import accolade.test.historisation.service.PersonnelService;
 import accolade.test.service.ActionService;
 
 
@@ -51,7 +50,7 @@ public class PersonnelController {
 			e.printStackTrace();
         }
 		Personnel p1 = personnelService.savePersonnel(personnel);
-		actionService.saveAction(p1.getId(),"Ajout d'un personnel", ActionType.Ajout.getId());
+		actionService.saveActionGeneric(p1.getId(),"Ajout d'un personnel", ActionType.Ajout.getId(), p1);
 		List<Personnel> personnels = listPersonnel(model);
 		model.addAttribute("personnels", personnels);
 		return "personnel";
@@ -64,7 +63,7 @@ public class PersonnelController {
 		Personnel p1 = personnelService.getPersonnelById(id);
 		try {
 			personnelService.deletePersonnelById(id);
-			actionService.saveAction(p1.getId(),"Suppression d'un personnel", ActionType.Suppression.getId());
+			actionService.saveActionGeneric(p1.getId(),"Suppression d'un personnel", ActionType.Suppression.getId(), p1);
 			
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
@@ -101,7 +100,7 @@ public class PersonnelController {
 			String personnelJson = objectMapper.writeValueAsString(personnel);
 			System.out.println("Etape 1" + personnelJson);
 			Personnel p1 = personnelService.savePersonnel(personnel);
-			actionService.saveAction(p1.getId(),"Mise à jour d'un personnel" ,ActionType.Mise_a_jour.getId());
+			actionService.saveActionGeneric(p1.getId(),"Mise à jour d'un personnel" ,ActionType.Mise_a_jour.getId(), p1);
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
 			return "personnel";

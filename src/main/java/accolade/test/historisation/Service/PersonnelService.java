@@ -1,8 +1,8 @@
-package accolade.test.historisation.Service;
+package accolade.test.historisation.service;
 
 import java.util.List;
 
-import accolade.test.historisation.Entity.Personnel;
+import accolade.test.historisation.entity.Personnel;
 
 // @Service
 public interface PersonnelService {

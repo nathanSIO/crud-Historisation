@@ -1,4 +1,4 @@
-package accolade.test.historisation.Entity;
+package accolade.test.historisation.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

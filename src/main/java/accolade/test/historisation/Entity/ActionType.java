@@ -1,4 +1,4 @@
-package accolade.test.historisation.Entity;
+package accolade.test.historisation.entity;
 
 public enum ActionType {
     

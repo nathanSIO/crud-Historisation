@@ -1,4 +1,4 @@
-package accolade.test.historisation.Repository;
+package accolade.test.historisation.repository;
 
 import java.util.Optional;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import accolade.test.historisation.Entity.Personnel;
+import accolade.test.historisation.entity.Personnel;
 
 @Repository
 public interface PersonnelRepository extends JpaRepository<Personnel,Long>{

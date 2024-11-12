@@ -1,8 +1,8 @@
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Controller/ActionController.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Controller/PersonnelController.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Entity/ActionType.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Entity/Personnel.java
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/HistorisationApplication.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Repository/PersonnelRepository.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Service/PersonnelService.java
-/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/Service/PersonnelServiceImpl.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/controller/ActionController.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/controller/PersonnelController.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/entity/ActionType.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/entity/Personnel.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/repository/PersonnelRepository.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/PersonnelService.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/PersonnelServiceImpl.java
