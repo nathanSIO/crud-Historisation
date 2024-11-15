@@ -1,4 +1,5 @@
 accolade/test/service/ActionServiceImpl.class
+accolade/test/service/IHistorisable.class
 accolade/test/service/ActionService.class
 accolade/test/App.class
 accolade/test/repository/ActionRepository.class

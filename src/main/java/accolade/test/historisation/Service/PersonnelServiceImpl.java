@@ -33,4 +33,6 @@ public class PersonnelServiceImpl implements PersonnelService {
     public List<Personnel> getAllPersonnel(){
         return personnelRepository.findAll();
     }
+
+    
 }

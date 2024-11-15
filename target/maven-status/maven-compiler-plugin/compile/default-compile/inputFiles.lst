@@ -4,5 +4,8 @@
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/entity/ActionType.java
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/entity/Personnel.java
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/repository/PersonnelRepository.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/HistorisablePersonnelService.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/IHistorisableActionAdaptater.java
+/Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/IHistorisableService.java
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/PersonnelService.java
 /Users/nathanjnvr/Documents/Projets/Github/crud-Historisation/src/main/java/accolade/test/historisation/service/PersonnelServiceImpl.java

@@ -1,8 +1,11 @@
 accolade/test/historisation/service/PersonnelService.class
+accolade/test/historisation/service/HistorisablePersonnelService.class
 accolade/test/historisation/entity/Personnel.class
+accolade/test/historisation/service/IHistorisableService.class
 accolade/test/historisation/entity/ActionType.class
 accolade/test/historisation/HistorisationApplication.class
 accolade/test/historisation/controller/PersonnelController.class
 accolade/test/historisation/repository/PersonnelRepository.class
 accolade/test/historisation/controller/ActionController.class
+accolade/test/historisation/service/IHistorisableActionAdaptater.class
 accolade/test/historisation/service/PersonnelServiceImpl.class

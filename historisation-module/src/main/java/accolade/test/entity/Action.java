@@ -1,20 +1,17 @@
 package accolade.test.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
-
 import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Action")
-public class Action {
+public class Action <T> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +30,20 @@ public class Action {
     @Column
     private String commentaire;
 
+    // @Column
+    // @Convert(converter = GenericJsonConverter.class)
+    @Column 
+    private String obj;
+
     
+
+    public Action(Long userId, LocalDateTime date, int actionType, String commentaire, String obj) {
+        UserId = userId;
+        this.date = date;
+        this.actionType = actionType;
+        this.commentaire = commentaire;
+        this.obj = obj;
+    }
 
     public Action(Long userId, LocalDateTime date, int actionType, String commentaire) {
         UserId = userId;

@@ -13,8 +13,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import accolade.test.historisation.entity.ActionType;
 import accolade.test.historisation.entity.Personnel;
+import accolade.test.historisation.service.IHistorisableActionAdaptater;
+import accolade.test.historisation.service.IHistorisableService;
 import accolade.test.historisation.service.PersonnelService;
 import accolade.test.service.ActionService;
+import accolade.test.service.IHistorisable;
 
 
 @RequestMapping("/crud")
@@ -26,6 +29,9 @@ public class PersonnelController {
 
 	@Autowired
 	private ActionService actionService;
+
+	@Autowired
+	private IHistorisableService iHistorisableService;
 
 	@Autowired
     ObjectMapper objectMapper = new ObjectMapper(); 
@@ -50,7 +56,8 @@ public class PersonnelController {
 			e.printStackTrace();
         }
 		Personnel p1 = personnelService.savePersonnel(personnel);
-		actionService.saveActionGeneric(p1.getId(),"Ajout d'un personnel", ActionType.Ajout.getId(), p1);
+		IHistorisable iHistorisable = new IHistorisableActionAdaptater(p1);
+		actionService.saveCreateAction(p1.getId(),"Ajout d'un personnel", ActionType.Ajout.getId(), iHistorisable);
 		List<Personnel> personnels = listPersonnel(model);
 		model.addAttribute("personnels", personnels);
 		return "personnel";
@@ -60,10 +67,12 @@ public class PersonnelController {
 
 	@RequestMapping(value="delete/{id}", method = RequestMethod.GET)
 	public String deletePersonnel(@PathVariable(value = "id") Long id, Model model){
+		
 		Personnel p1 = personnelService.getPersonnelById(id);
+		IHistorisable iHistorisable = new IHistorisableActionAdaptater(p1);
 		try {
 			personnelService.deletePersonnelById(id);
-			actionService.saveActionGeneric(p1.getId(),"Suppression d'un personnel", ActionType.Suppression.getId(), p1);
+			actionService.saveDeleteAction(p1.getId(),"Suppression d'un personnel", ActionType.Suppression.getId(), iHistorisable);
 			
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
@@ -97,10 +106,19 @@ public class PersonnelController {
 	@RequestMapping(value="update/{id}", method = RequestMethod.POST)
 	public String updatePersonnel(@ModelAttribute Personnel personnel, @PathVariable(value="id")Long id, Model model){
 		try {
-			String personnelJson = objectMapper.writeValueAsString(personnel);
-			System.out.println("Etape 1" + personnelJson);
-			Personnel p1 = personnelService.savePersonnel(personnel);
-			actionService.saveActionGeneric(p1.getId(),"Mise à jour d'un personnel" ,ActionType.Mise_a_jour.getId(), p1);
+
+			Personnel oldPersonnel = personnelService.getPersonnelById(id);
+			Personnel updatePersonnel = personnel;
+
+			System.out.println("DEBUT");
+			System.out.println(oldPersonnel.toString() + " /// " + updatePersonnel.toString());
+			String changes = iHistorisableService.getChanges(oldPersonnel, updatePersonnel);
+
+			personnelService.savePersonnel(personnel);
+			
+			IHistorisable changesHistorisable = new IHistorisableActionAdaptater(changes);
+			
+			actionService.saveUpdateAction(updatePersonnel.getId(),"Mise à jour d'un personnel" ,ActionType.Mise_a_jour.getId(),changesHistorisable);
 			List<Personnel> personnels = listPersonnel(model);
 			model.addAttribute("personnels", personnels);
 			return "personnel";
